@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/build
-=======
 # Compiled class file
 *.class
 
@@ -12,6 +9,8 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+# ignore all files in the build/ directory
+build/
 
 # Package Files #
 *.jar
@@ -23,4 +22,3 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
->>>>>>> b7a895253d9b7ea664eab758306666318f489f5c
