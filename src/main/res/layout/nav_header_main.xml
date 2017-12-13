@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/navigation_header_height"
+    android:background="@color/colorPrimary"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/bg_bilibili_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_menu_bg_click"
+        android:tint="@color/nav_head_image_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.learn.liyv.learnbilibili.widget.CircleImageView
+        android:id="@+id/user_avatar_view"
+        android:layout_width="@dimen/navigation_avatar_size"
+        android:layout_height="@dimen/navigation_avatar_size"
+        android:src="@drawable/ico_user_default"
+        app:border_color="@android:color/white"
+        app:border_width="1dp" />
+
+    <ImageView
+        android:id="@+id/iv_head_noftiy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_navigation_header_notification"
+        app:layout_constraintRight_toLeftOf="@id/iv_head_switch_mode" />
+
+    <ImageView
+        android:id="@+id/iv_head_switch_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_switch_night"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="liyv1234567"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_small_text_size"
+        app:layout_constraintTop_toBottomOf="@id/user_avatar_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/white_border"
+        android:text="LV2"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toRightOf="@id/user_avatar_view"
+        app:layout_constraintTop_toTopOf="@id/user_name" />
+
+    <TextView
+        android:id="@+id/user_mvp_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_tiny_margin"
+        android:background="@drawable/round_white_bg"
+        android:text="@string/members"
+        android:textColor="@color/nav_head_roung_text_background"
+        android:textSize="10sp"
+        app:layout_constraintTop_toBottomOf="@id/user_name" />
+
+    <TextView
+        android:id="@+id/user_other_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/navigation_subtitle_secondary_text_size"
+        app:layout_constraintTop_toBottomOf="@id/user_mvp_tv" />
+
+</android.support.constraint.ConstraintLayout>
