@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import com.learn.liyv.learnbilibili.base.RxBaseActivity;
@@ -68,7 +69,6 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
                 .beginTransaction()
                 .add(R.id.container, mHomePageFragment)
                 .show(mHomePageFragment).commit();
-        System.out.println("initFragments");
     }
 
 
@@ -76,16 +76,30 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
 
     }
 
+    //监听 back 键操作
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (mDrawerLayout.isDrawerOpen(mDrawerLayout.getChildAt(1))) {
+                mDrawerLayout.closeDrawers();
+            } else {
+                exitApp();
+            }
+        }
+        return true;
+    }
+
     /**
      * 双击退出App
      */
     private void exitApp() {
+
         if (System.currentTimeMillis() - exitTime > 2000) {
             ToastUtil.ShortToast("再按一次退出");
             exitTime = System.currentTimeMillis();
         } else {
             PreferenceUtil.remove(ConstantUtil.SWITCH_MODE_KEY);
-            this.exitApp();
+            finish();
         }
     }
 }

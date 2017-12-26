@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.learn.liyv.learnbilibili.adapter.section.HomeRecommendedSection;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,7 +40,6 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
         Integer resId;
         LayoutInflater lf = LayoutInflater.from(parent.getContext());
         for (Map.Entry<String, Integer> entry : sectionViewTypeNumbers.entrySet()) {
-
             if (viewType >= entry.getValue() && viewType < entry.getValue() + VIEW_TYPE_QTY) {
                 Section section = sections.get(entry.getKey());
                 int sectionViewType = viewType - entry.getValue();
@@ -89,6 +90,7 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
                 }
             }
         }
+        System.out.println(viewHolder instanceof HomeRecommendedSection.HeaderViewHolder);
         return viewHolder;
     }
 //添加 section
@@ -138,7 +140,8 @@ public class SectionedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerV
             if (!section.isVisible())
                 continue;
             int sectionTotal = section.getSectionItemsTotal();
-            if (position >= currentPos && currentPos <= (currentPos + sectionTotal)) {
+            if (position >= currentPos && position <= (currentPos + sectionTotal-1)) {
+                System.out.println(position+"----"+currentPos);
                 if (section.hasHeader()) {
                     if (position == currentPos) {
                         getSectionForPosition(position).onBindHeaderViewHolder(holder);

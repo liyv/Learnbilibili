@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
@@ -36,6 +37,7 @@ import butterknife.ButterKnife;
  */
 
 public class HomeRecommendedSection extends StatelessSection {
+    public static final String TAG = "推荐";
     private static final String TYPE_RECOMMENDED = "recommend";
     private static final String TYPE_LIVE = "live";
     private static final String TYPE_BANGUMI = "bangumi_2";
@@ -69,11 +71,13 @@ public class HomeRecommendedSection extends StatelessSection {
 
     @Override
     public RecyclerView.ViewHolder getItemViewHolder(View view) {
+        Log.e(TAG, "getItemViewHolder: 内容");
         return new ItemViewHolder(view);
     }
 
     @Override
     public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Log.e(TAG, "onBindItemViewHolder: 绑定内容");
         ItemViewHolder itemViewHolder = (ItemViewHolder) holder;
         final RecommendInfo.ResultBean.BodyBean bodyBean = datas.get(position);
 
@@ -89,6 +93,15 @@ public class HomeRecommendedSection extends StatelessSection {
         itemViewHolder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String gotoX=bodyBean.getGotoX();
+                switch (gotoX)
+                {
+                    case TYPE_LIVE:
+                    case GOTO_BANGUMI:
+                        break;
+                    default:
+
+                }
                 System.out.println("点击卡片");
             }
         });
@@ -134,12 +147,14 @@ public class HomeRecommendedSection extends StatelessSection {
 
     @Override
     public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
+        Log.e(TAG, "getHeaderViewHolder: 头部");
         return new HeaderViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
+        Log.e(TAG, "onBindHeaderViewHolder: 绑定头部");
         HeaderViewHolder headerViewHolder = (HeaderViewHolder) holder;
         setTypeIcon(headerViewHolder);
         headerViewHolder.mTypeTv.setText(title);
@@ -226,12 +241,14 @@ public class HomeRecommendedSection extends StatelessSection {
 
     @Override
     public RecyclerView.ViewHolder getFooterViewHolder(View view) {
+        Log.e(TAG, "getFooterViewHolder: 底部");
         return new FootViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindFooterViewHolder(RecyclerView.ViewHolder holder) {
+        Log.e(TAG, "onBindFooterViewHolder: 绑定底部");
         final FootViewHolder footViewHolder = (FootViewHolder) holder;
         footViewHolder.mDynamic.setText(String.valueOf(mRandom.nextInt(200)) + "条新动态,点这里刷新");
         footViewHolder.mRefreshBtn.setOnClickListener(v -> footViewHolder.mRefreshBtn
@@ -284,7 +301,7 @@ public class HomeRecommendedSection extends StatelessSection {
         }
     }
 
-    static class HeaderViewHolder extends RecyclerView.ViewHolder {
+    public static class HeaderViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_type_img)
         ImageView mTypeImg;
         @BindView(R.id.item_type_tv)

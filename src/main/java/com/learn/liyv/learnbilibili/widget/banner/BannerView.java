@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.learn.liyv.learnbilibili.R;
+import com.learn.liyv.learnbilibili.module.common.BrowserActivity;
 import com.learn.liyv.learnbilibili.utils.DisplayUtil;
 
 import java.util.ArrayList;
@@ -135,7 +136,8 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
 
             @Override
             public void onPageSelected(int position) {
-                position = pointSize % pointSize;
+                System.out.println("轮播" + position);
+                position = position % pointSize;
                 currentPos = position;
                 for (int i = 0; i < points.getChildCount(); i++) {
                     points.getChildAt(i).setBackgroundResource(unSelectRes);
@@ -195,11 +197,11 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
     public void destroy() {
         if (null != compositeSubscription)
             compositeSubscription.dispose();
-
     }
 
     @Override
     public void onItemClick() {
-
+        BrowserActivity.launch(getContext(), bannerList.get(currentPos).link,
+                bannerList.get(currentPos).title);
     }
 }

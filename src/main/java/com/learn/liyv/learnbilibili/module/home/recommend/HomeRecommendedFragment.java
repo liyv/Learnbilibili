@@ -57,8 +57,8 @@ public class HomeRecommendedFragment extends RxLazyFragment {
     @Override
     public void finishCreateView(Bundle state) {
         isPrepared = true;
-        initRecyclerView();
         lazyLoad();
+        initRecyclerView();
     }
 
     @Override
@@ -66,7 +66,6 @@ public class HomeRecommendedFragment extends RxLazyFragment {
         if (!isPrepared || !isVisible) {
             return;
         }
-        System.out.println("懒加载 HomeRecommendedFragment");
 
         initRefreshLayout();
         isPrepared = false;
@@ -99,7 +98,6 @@ public class HomeRecommendedFragment extends RxLazyFragment {
                 .map(new Function<RecommendBannerInfo, List<RecommendBannerInfo.DataBean>>() {
                     @Override
                     public List<RecommendBannerInfo.DataBean> apply(RecommendBannerInfo recommendBannerInfo) throws Exception {
-                        System.out.println(recommendBannerInfo.getData());
                         return recommendBannerInfo.getData();
                     }
                 })
@@ -143,7 +141,7 @@ public class HomeRecommendedFragment extends RxLazyFragment {
         convertBanner();
         mSectionedAdapter.addSection(new HomeRecommendBannerSection(banners));
         int size = results.size();
-        /*for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             String type = results.get(i).getType();
             if (!TextUtils.isEmpty(type)) {
                 switch (type) {
@@ -167,8 +165,7 @@ public class HomeRecommendedFragment extends RxLazyFragment {
                 }
             }
 
-        }*/
-        System.out.println(results.size());
+        }
         mSectionedAdapter.notifyDataSetChanged();
     }
 
