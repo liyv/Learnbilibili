@@ -23,8 +23,8 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/MainActivityColorTranslucentTheme" />
-        <activity android:name=".module.common.BrowserActivity"></activity>
-        <activity android:name=".module.video.VideoDetailsActivity"></activity>
+        <activity android:name=".module.common.BrowserActivity" />
+        <activity android:name=".module.video.VideoDetailsActivity" />
     </application>
 
 </manifest>

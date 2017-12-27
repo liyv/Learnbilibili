@@ -136,7 +136,6 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
 
             @Override
             public void onPageSelected(int position) {
-                System.out.println("轮播" + position);
                 position = position % pointSize;
                 currentPos = position;
                 for (int i = 0; i < points.getChildCount(); i++) {
