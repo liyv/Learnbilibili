@@ -11,6 +11,8 @@
 .mtj.tmp/
 # ignore all files in the build/ directory
 build/
+src/test/
+learnbilibili.iml
 
 # Package Files #
 *.jar

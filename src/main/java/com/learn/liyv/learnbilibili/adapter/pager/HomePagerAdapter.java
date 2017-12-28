@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.learn.liyv.learnbilibili.R;
+import com.learn.liyv.learnbilibili.module.home.bangumi.HomeBangumiFragment;
 import com.learn.liyv.learnbilibili.module.home.live.HomeLiveFragment;
 import com.learn.liyv.learnbilibili.module.home.recommend.HomeRecommendedFragment;
 
@@ -37,6 +38,9 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
                 case 1:
                     fragments[position] = HomeRecommendedFragment.newInstance();
                     break;
+                case 2:
+                    fragments[position] = HomeBangumiFragment.newInstance();
+                    break;
             }
         }
         return fragments[position];
@@ -44,7 +48,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Nullable

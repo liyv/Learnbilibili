@@ -2,6 +2,7 @@ package com.learn.liyv.learnbilibili.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.learn.liyv.learnbilibili.LearnBilibiliApp;
+import com.learn.liyv.learnbilibili.network.api.BangumiService;
 import com.learn.liyv.learnbilibili.network.api.BiliAppService;
 import com.learn.liyv.learnbilibili.network.api.LiveService;
 import com.learn.liyv.learnbilibili.network.axiliary.ApiConstants;
@@ -40,6 +41,9 @@ public class RetrofitHelper {
 
     public static LiveService getLiveAPI(){
         return createApi(LiveService.class, ApiConstants.LIVE_BASE_URL);
+    }
+    public static BangumiService getBangumiAPI() {
+        return createApi(BangumiService.class, ApiConstants.BANGUMI_BASE_URL);
     }
 
     /**
