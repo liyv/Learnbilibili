@@ -10,6 +10,7 @@ import com.learn.liyv.learnbilibili.R;
 import com.learn.liyv.learnbilibili.module.home.bangumi.HomeBangumiFragment;
 import com.learn.liyv.learnbilibili.module.home.live.HomeLiveFragment;
 import com.learn.liyv.learnbilibili.module.home.recommend.HomeRecommendedFragment;
+import com.learn.liyv.learnbilibili.module.home.region.HomeRegionFragment;
 
 /**
  * Created by lyh on 2017/12/9.
@@ -41,6 +42,9 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
                 case 2:
                     fragments[position] = HomeBangumiFragment.newInstance();
                     break;
+                case 3:
+                    fragments[position] = HomeRegionFragment.newInstance();
+                    break;
             }
         }
         return fragments[position];
@@ -48,7 +52,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 
     @Nullable
